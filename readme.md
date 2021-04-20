@@ -19,9 +19,9 @@ This will get the latest meme and quotes. It uses the requests library to update
 4. Type `/help` to get started
 5. Type `/meme` to get meme.
 6. Type `/resource` to get recent resource. It's hardcoded in intial release.
-
+7. Type `/icon <query> <n>` where `n` must be integer for how may icons you want about a particular `query` 
 ##### Note  : -
 All the changes are most welcomed. Feel free to make pull requests and raise issues.
 
 ##### Last Update :  -
-13 March 2021
+20 April 2021
