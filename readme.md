@@ -1,5 +1,5 @@
 ## Resource Telegram Bot
-This will get the latest meme and quotes. It uses the requests library to update and fetch data.
+A bot that will get the latest font, icons, meme, blogs and quotes. It uses the requests library to update and fetch data.
 
 #### Preview
 <img src="telegram.JPG" alt="resource bot">
