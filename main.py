@@ -2,7 +2,7 @@ import json
 
 import requests
 
-Token = "1671609937:AAGxsp2U_ehuyki0GC6qm_H75AvzYSnL5aE"
+Token = "Enter your key"
 
 
 class ResourceBot():
