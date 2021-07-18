@@ -2,6 +2,7 @@ import json
 import os
 import requests
 from requests_html import HTML
+import random
 
 from main import ResourceBot
 
@@ -56,19 +57,20 @@ def extract_icons_url(res_html,limit=1):
 def make_reply(message):
     reply = None
     if message == '/help':
-        reply = "Type \n/meme to get meme \n/quote to get quote"
+        reply = "Type \n/meme to get meme \n/quote to get quote\n/icon <keyword> <no of asset>"
     elif message == '/meme':
         reply = random.choice(meme_data)
     elif message == '/resource':
         reply = "https://css-tricks.com/too-many-svgs-clogging-up-your-markup-try-use/"
     elif message == '/quote':
         reply = format_message(random.choice(quotes_data))
-    elif message.startswith('/icon'):
-        search_icon,*params = message.split(" ")
-        if len(params)>1:
-            flaticon_url = f"https://www.flaticon.com/search?word={params[0]}"
-            icons = extract_icons_url(pharse_and_extract(flaticon_url),limit=int(params[-1]))
-            reply = icons
+    elif message:
+        if message.startswith('/icon'):
+            search_icon,*params = message.split(" ")
+            if len(params)>1:
+                flaticon_url = f"https://www.flaticon.com/search?word={params[0]}"
+                icons = extract_icons_url(pharse_and_extract(flaticon_url),limit=int(params[-1]))
+                reply = icons
     return reply
 
 while True:
