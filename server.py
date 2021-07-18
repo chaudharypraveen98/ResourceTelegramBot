@@ -1,6 +1,5 @@
 import json
 import os
-import random
 import requests
 from requests_html import HTML
 
@@ -52,7 +51,7 @@ def extract_icons_url(res_html,limit=1):
     titles=res_html.find(".icon--holder>a>img")
     for title in titles:
       icons_url.append(title.attrs['data-src'])
-    return " \n".join(random.sample(icons_url,limit))
+    return " \n".join(icons_url[:limit])
 
 def make_reply(message):
     reply = None
@@ -64,14 +63,13 @@ def make_reply(message):
         reply = "https://css-tricks.com/too-many-svgs-clogging-up-your-markup-try-use/"
     elif message == '/quote':
         reply = format_message(random.choice(quotes_data))
-    elif '/icon' in message:
+    elif message.startswith('/icon'):
         search_icon,*params = message.split(" ")
         if len(params)>1:
             flaticon_url = f"https://www.flaticon.com/search?word={params[0]}"
-            icons = extract_icons_url(pharse_and_extract(flaticon_url),limit=int(params[-1]))  
+            icons = extract_icons_url(pharse_and_extract(flaticon_url),limit=int(params[-1]))
             reply = icons
     return reply
-
 
 while True:
     print("....")
